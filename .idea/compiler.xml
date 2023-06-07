@@ -12,9 +12,11 @@
         <module name="payment-service" />
         <module name="service-registry" />
         <module name="order-registry" />
+        <module name="cloud-gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cloud-gateway" target="11" />
       <module name="config-server" target="11" />
       <module name="order-registry" target="11" />
       <module name="payment-service" target="11" />
@@ -24,6 +26,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cloud-gateway" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="order-registry" options="-parameters" />
       <module name="payment-service" options="-parameters" />

@@ -3,12 +3,12 @@ server:
 
 spring:
   application:
-    name: CONFIG_SERVER
+    name: CONFIG-SERVER
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/tantran21501/config-server-repo
+          uri: https://github.com/tantran21501/config_repository
           clone-on-start: true
 
 eureka:

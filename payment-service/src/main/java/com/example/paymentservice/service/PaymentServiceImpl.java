@@ -47,7 +47,7 @@ public class PaymentServiceImpl implements PaymentService{
                 .paymentMode(PaymentMode.valueOf(transactionDetails.getPaymentMode()))
                 .paymentDate(transactionDetails.getPaymentDate())
                 .orderId(transactionDetails.getOrderId())
-                .stauts(transactionDetails.getPaymentStatus())
+                .status(transactionDetails.getPaymentStatus())
                 .amount(transactionDetails.getAmount())
                 .build();
         return paymentResponse;

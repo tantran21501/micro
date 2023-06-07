@@ -92,13 +92,21 @@ public class OrderServiceImpl implements OrderService {
         log.info("Getting payment information from the payment Service");
         PaymentResponse paymentResponse
                  =restTemplate.getForObject(
-                         "http://PAYMENT-SERVICE/payment",
+                         "http://PAYMENT-SERVICE/payment/order/" + order.getId(),
                 PaymentResponse.class
         );
         OrderResponse.ProductDetails productDetails
                 =OrderResponse.ProductDetails.builder()
                 .productName(productResponse.getProductName())
                 .productId(productResponse.getProductId())
+                .build();
+
+        OrderResponse.PaymentDetails paymentDetails
+                = OrderResponse.PaymentDetails.builder()
+                .paymentId(paymentResponse.getPaymentId())
+                .paymentStatus(paymentResponse.getStatus())
+                .paymentDate(paymentResponse.getPaymentDate())
+                .paymentMode(paymentResponse.getPaymentMode())
                 .build();
 
         OrderResponse orderResponse
@@ -108,6 +116,7 @@ public class OrderServiceImpl implements OrderService {
                 .amount(order.getAmount())
                 .orderDate(order.getOrderDate())
                 .productDetails(productDetails)
+                .paymentDetails(paymentDetails)
                 .build();
         return orderResponse;
     }

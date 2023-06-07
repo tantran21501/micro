@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/cloud-gateway/cloud-gateway.iml" filepath="$PROJECT_DIR$/cloud-gateway/cloud-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/micro.iml" filepath="$PROJECT_DIR$/.idea/micro.iml" />
       <module fileurl="file://$PROJECT_DIR$/order-registry/order-registry.iml" filepath="$PROJECT_DIR$/order-registry/order-registry.iml" />

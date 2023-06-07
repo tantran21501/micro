@@ -16,13 +16,43 @@ spring:
     name: ORDER-SERVICE
   config:
     import: configserver:http://localhost:9296
-#
-#
-#eureka:
-#  instance:
-#    prefer-ip-address: true
-#  client:
-#    fetch-registry: true
-#    register-with-eureka: true
-#    service-url:
-#      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-31013731.okta.com/oauth2/default
+      client:
+        registration:
+          internal-client:
+            provider: okta
+            authorization-grant-type: client_credentials
+            scope: internal
+            client-id: 0oa9v2q9k1BFa2iCm5d7
+            client-secret: 6O4djGr2YtQZ2Yrr3-FqMG2PfGo9m3acM3LH7bzC
+        provider:
+          okta:
+            issuer-uri: https://dev-31013731.okta.com/oauth2/default
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      external:
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
